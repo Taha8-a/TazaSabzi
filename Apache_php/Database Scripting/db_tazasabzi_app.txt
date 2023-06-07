@@ -1,0 +1,62 @@
+--
+-- Database: `db_tazasabzi_app`
+--
+
+CREATE DATABASE `db_tazasabzi_app`;
+
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product`(
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `price` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+);
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `datetime` datetime DEFAULT CURRENT_TIMESTAMP
+);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
